@@ -22,7 +22,7 @@ ResultSet rst = null;
      */
     public Login() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //center the JFrame
         
     }
 
