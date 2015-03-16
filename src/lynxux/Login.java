@@ -22,6 +22,8 @@ ResultSet rst = null;
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -42,7 +44,7 @@ ResultSet rst = null;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Username");
+        jLabel1.setText("Employee ID");
 
         jLabel2.setText("Password");
 
@@ -111,8 +113,9 @@ ResultSet rst = null;
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         conn = MySqlConnect.ConnectDB();
-        String sql = "Select * from Accounts where Username=? AND Password=?";
+        String sql = "Select * from Employees where EmpId=? AND Password=?";
         String level = null;
+        String name = null;
         try{
             pst = conn.prepareStatement(sql);
             pst.setString(1,txtUsername.getText());
@@ -120,19 +123,19 @@ ResultSet rst = null;
             rst = pst.executeQuery();
             rst.next();
             level = rst.getString("Level");
-            
+            name = rst.getString("Name");
             JOptionPane.showMessageDialog(rootPane, level);
             if(level.equals("Admin")){
                 
-                JOptionPane.showMessageDialog(null,"Welcome Admin " + txtUsername.getText());
-                Welcome w = new Welcome();
+                JOptionPane.showMessageDialog(null,"Welcome Admin " + name);
+                Admin w = new Admin();
                 w.setVisible(true);
                 super.dispose();
             }
             else{
                 
-                JOptionPane.showMessageDialog(null,"Welcome Staff member " + txtUsername.getText());
-                WelcomeU w = new WelcomeU();
+                JOptionPane.showMessageDialog(null,"Welcome Staff member " + name);
+                Staff w = new Staff();
                 w.setVisible(true);
                 super.dispose();
             }
