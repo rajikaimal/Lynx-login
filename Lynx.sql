@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 16, 2015 at 12:07 PM
+-- Generation Time: Mar 17, 2015 at 12:01 PM
 -- Server version: 5.5.37-0ubuntu0.13.10.1
 -- PHP Version: 5.5.3-1ubuntu2.6
 
@@ -23,16 +23,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Application`
+-- Table structure for table `AdditionalLeaves`
 --
 
-CREATE TABLE IF NOT EXISTS `Application` (
+CREATE TABLE IF NOT EXISTS `AdditionalLeaves` (
   `EmpId` varchar(255) NOT NULL,
-  `Date` date NOT NULL,
-  `Reason` varchar(255) NOT NULL,
   `Type` varchar(255) NOT NULL,
   `Status` varchar(255) NOT NULL,
+  `Reason` varchar(255) NOT NULL,
+  `Date` date NOT NULL,
   PRIMARY KEY (`EmpId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `DefaultLeaves`
+--
+
+CREATE TABLE IF NOT EXISTS `DefaultLeaves` (
+  `EmpId` varchar(255) NOT NULL,
+  `Date` date NOT NULL,
+  `Type` varchar(255) NOT NULL,
+  `Status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -80,14 +93,14 @@ CREATE TABLE IF NOT EXISTS `Leaves` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Report`
+-- Table structure for table `RequestedLeaves`
 --
 
-CREATE TABLE IF NOT EXISTS `Report` (
+CREATE TABLE IF NOT EXISTS `RequestedLeaves` (
   `EmpId` varchar(255) NOT NULL,
-  `Casual` varchar(255) NOT NULL,
-  `Annual` varchar(255) NOT NULL,
-  PRIMARY KEY (`EmpId`)
+  `Date` date NOT NULL,
+  `Type` varchar(255) NOT NULL,
+  `Reason` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
