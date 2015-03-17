@@ -14,16 +14,16 @@ import java.awt.*;
  * @author rajika
  */
 public class Login extends javax.swing.JFrame {
-Connection conn = null;
-PreparedStatement pst = null;
-ResultSet rst = null;
+    static String loggedInUser = null;
+    Connection conn = null;
+    PreparedStatement pst = null;
+    ResultSet rst = null;
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null); //center the JFrame
-        
     }
 
     /**
@@ -117,6 +117,7 @@ ResultSet rst = null;
         String level = null;
         String name = null;
         try{
+            loggedInUser = txtUsername.getText();
             pst = conn.prepareStatement(sql);
             pst.setString(1,txtUsername.getText());
             pst.setString(2,txtPassword.getText());
